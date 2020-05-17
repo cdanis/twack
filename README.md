@@ -13,3 +13,4 @@ It checkpoints state, so it shouldn't send duplicate announcements.
 * better docs
 * example systemd unit files?
 * debian package?
+* post to a special Slack webhook once in a while if something is broken?
