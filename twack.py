@@ -16,11 +16,12 @@ and limitations under the License.
 """
 
 import argparse
-import requests
 import yaml
 import time
 
 from collections import defaultdict
+
+import requests
 
 from box import Box
 from logzero import logger
