@@ -10,3 +10,6 @@ It checkpoints state, so it shouldn't send duplicate announcements.
 # TODOs
 * add Discord support.
 * support monitoring more than 100 streams
+* better docs
+* example systemd unit files?
+* debian package?
