@@ -26,7 +26,9 @@ from box import Box
 from logzero import logger
 
 SESSION = requests.Session()
-SESSION.headers.update({'User-Agent': 'twack/{} (github.com/cdanis)'.format(__version__)})
+SESSION.headers.update({
+    'User-Agent': 'twack/{} (https://github.com/cdanis/twack) python-requests/{}'.format(
+        __version__, requests.__version__)})
 
 
 # TODO: cache game names in the checkpoint file as well
