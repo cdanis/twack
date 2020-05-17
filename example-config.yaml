@@ -1,0 +1,20 @@
+sinks:
+    myslack1:
+        webhook:
+            prod: https://hooks.slack.com/webhook-url-for-a-channel
+            test: https://hooks.slack.com/webhook-url-for-a-DM-with-myself
+        twitches:
+            - BobRoss
+            - nucleosynth
+            - GabySpartz
+            - autumnlilymtg
+    friendslack2:
+        webhook:
+            prod: https://hooks.slack.com/webhook-url-for-a-channel
+            test: https://hooks.slack.com/webhook-url-for-a-DM-with-myself
+        twitches:
+            - Jorbs
+            - Hanayeol
+
+twitch_client_id: go_make_one_at_twitch_api_console
+twitch_client_secret: go_get_one_after_you_make_a_client_id
