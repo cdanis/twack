@@ -7,6 +7,23 @@ Invoke it every minute via cron or systemd timer.
 
 It checkpoints state, so it shouldn't send duplicate announcements.
 
+# Getting started
+* Create a Twitch application on their dev console:
+  https://dev.twitch.tv/console
+  * Make note of the client ID, and also generate a client secret.
+    You need them for the config file.
+* Write a config file.  Easiest is to `cp example-config.yaml config.yaml`
+  and start editing.
+    * If you need to, first create some Slack webhooks:
+      https://api.slack.com/messaging/webhooks
+    * It's best if the 'prod' webhooks are where you actually want to post,
+      and the 'test' webhooks are a DM with yourself.
+* Create an empty checkpoint file: `touch checkpoint.yaml`
+* Invoke `twack.py` for a first test.  Without `--prod`, this will post to your
+  test webhooks.  Perfect for testing.
+* When you're satisfied, truncate the checkpoint file, and run it in a
+  shell loop/from cron/from systemd once a minute, passing `--prod`.
+
 ## TODOs
 * add Discord support.
 * support monitoring more than 100 streams
