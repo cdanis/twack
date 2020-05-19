@@ -86,6 +86,7 @@ def main(args):
                            params=params)
     logger.debug('got Twitch response %s', response)
     response.raise_for_status()
+    # TODO: if we get a 401, try refreshing the auth token & retrying.
     data = Box(response.json()).data
     games = get_game_names(set([x.game_id for x in data]))
     for stream in data:
