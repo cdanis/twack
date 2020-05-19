@@ -25,7 +25,7 @@ It checkpoints state, so it shouldn't send duplicate announcements.
   and run twack in a shell loop/from cron/from systemd once a minute,
   passing `--prod`.
 
-## TODOs
+# TODOs
 * add Discord support.
 * support monitoring more than 100 streams
 * better docs
