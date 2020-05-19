@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Posts Twitch go-live notifications to Slack.  https://i.imgur.com/vArGUrH.png"""
+"""Posts Twitch go-live notifications to Slack.  https://i.imgur.com/vArGUrH.png
+
+Write a config file, touch an empty checkpoint file, and invoke me once a minute
+(systemd timer or cron recommended)."""
 
 __author__ = "Chris Danis"
 __email__ = "cdanis@gmail.com"
@@ -126,7 +129,7 @@ def main(args):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Poll the Twitch API and post to Slack',
+    parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('-c', '--config', type=argparse.FileType('r'), default='config.yaml',
                         help='Path to the configuration file')
