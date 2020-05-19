@@ -16,13 +16,14 @@ It checkpoints state, so it shouldn't send duplicate announcements.
   and start editing.
     * If you need to, first create some Slack webhooks:
       https://api.slack.com/messaging/webhooks
-    * It's best if the 'prod' webhooks are where you actually want to post,
-      and the 'test' webhooks are a DM with yourself.
+    * It's best if the 'test' webhooks target a DM with yourself,
+      and the 'prod' webhooks target where you actually want to post.
 * Create an empty checkpoint file: `touch checkpoint.yaml`
 * Invoke `twack.py` for a first test.  Without `--prod`, this will post to your
   test webhooks.  Perfect for testing.
-* When you're satisfied, truncate the checkpoint file, and run it in a
-  shell loop/from cron/from systemd once a minute, passing `--prod`.
+* When you're satisfied, optionally truncate the checkpoint file,
+  and run twack in a shell loop/from cron/from systemd once a minute,
+  passing `--prod`.
 
 ## TODOs
 * add Discord support.
