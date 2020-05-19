@@ -16,11 +16,13 @@ and limitations under the License.
 """
 
 import argparse
-import yaml
+import logging
 import time
 
 from collections import defaultdict
 
+import logzero
+import yaml
 import requests
 
 from box import Box
@@ -48,6 +50,9 @@ def get_game_names(games):
 
 
 def main(args):
+    if not args.verbose:
+        logzero.loglevel(logging.INFO)
+
     config = Box.from_yaml(args.config)
     SESSION.headers.update({'Client-ID': config.twitch_client_id})
 
@@ -120,10 +125,17 @@ def main(args):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Poll the Twitch API and post to Slack')
-    parser.add_argument('-c', '--config', type=argparse.FileType('r'), default='config.yaml')
-    parser.add_argument('--checkpoint', type=argparse.FileType('r+'), default='checkpoint.yaml')
-    parser.add_argument('--prod', action='store_true')
+    parser = argparse.ArgumentParser(description='Poll the Twitch API and post to Slack',
+                                     formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser.add_argument('-c', '--config', type=argparse.FileType('r'), default='config.yaml',
+                        help='Path to the configuration file')
+    parser.add_argument('--checkpoint', type=argparse.FileType('r+'), default='checkpoint.yaml',
+                        help='Path to the checkpoint file (must exist, but can be empty)')
+    parser.add_argument('--prod', action='store_true',
+                        help='If true, use the "prod" webhooks instead of the "test" webhooks.')
+    parser.add_argument('-v', '--verbose', action='store_true')
+    parser.add_argument('-V', '--version', action='version',
+                        version='%(prog)s {}'.format(__version__))
 
     args = parser.parse_args()
     main(args)
